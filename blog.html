@@ -385,12 +385,12 @@
 
     <!-- SCRIPT DE FUNCIONALIDAD DEL BOTÓN -->
     <script>
-        function toggleTransparency(btn) \{
+        function toggleTransparency(btn) {
             const content = document.getElementById('transparencia-details');
             const icon = btn.querySelector('i');
             const textSpan = btn.querySelector('.btn-text');
 
-            if (content.classList.contains('hidden')) \{
+            if (content.classList.contains('hidden')) {
                 // Abrir
                 content.classList.remove('hidden');
                 content.classList.add('animate-fadeIn');
@@ -400,7 +400,7 @@
                 icon.classList.remove('fa-chevron-down');
                 icon.classList.add('fa-chevron-up');
 
-            \} else \{
+            } else {
                 // Cerrar
                 content.classList.add('hidden');
                 content.classList.remove('animate-fadeIn');
@@ -409,8 +409,8 @@
                 textSpan.textContent = 'Leer explicación completa';
                 icon.classList.remove('fa-chevron-up');
                 icon.classList.add('fa-chevron-down');
-            \}
-        \}
+            }
+        }
     </script>
 </body>
 </html>
