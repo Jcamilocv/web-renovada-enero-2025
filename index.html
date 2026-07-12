@@ -214,36 +214,36 @@
                     </p>
                     
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="https://t.me/canalmoneytips" target="_blank" class="px-8 py-4 bg-brand-neon hover:bg-green-400 dark:hover:bg-white text-gray-900 dark:text-brand-dark font-extrabold rounded-xl transition-all transform hover:-translate-y-1 shadow-sm dark:shadow-neon text-center text-lg flex items-center justify-center">
-                            <i class="fa-brands fa-telegram mr-2 text-xl"></i> Unirse Gratis
+                        <a href="https://t.me/canalmoneytips" target="_blank" class="px-8 py-4 bg-brand-neon hover:bg-green-400 dark:hover:bg-white text-gray-900 dark:text-brand-dark font-extrabold rounded-xl transition-all transform hover:-translate-y-1 shadow-neon text-center text-lg flex items-center justify-center relative z-30 pointer-events-auto">
+                            <i class="fa-brands fa-telegram mr-2 text-xl"></i> Unirse Ahora
                         </a>
-                        <a href="#estadisticas" class="px-8 py-4 bg-white dark:bg-transparent hover:bg-gray-50 dark:hover:bg-white/5 border border-gray-300 dark:border-white/20 text-gray-800 dark:text-white font-semibold rounded-xl transition-all shadow-sm text-center flex items-center justify-center gap-2">
+                        <a href="#estadisticas" class="px-8 py-4 bg-white dark:bg-transparent hover:bg-gray-50 dark:hover:bg-white/5 border border-gray-300 dark:border-white/20 text-gray-800 dark:text-white font-semibold rounded-xl transition-all shadow-sm text-center flex items-center justify-center gap-2 relative z-30 pointer-events-auto">
                             <i class="fa-solid fa-chart-line"></i> Ver Rentabilidad
                         </a>
                     </div>
                 </div>
 
                 <!-- Right Content (Avatar Image) -->
-                <div class="w-full lg:w-1/2 flex justify-center relative z-10 ">
-                    
-                    <!-- MODO CLARO: Imagen difuminada hacia el fondo como marca de agua elegante -->
-                    <div class="block dark:hidden absolute lg:relative top-1/2 lg:top-auto -translate-y-1/2 lg:translate-y-0 w-[130%] sm:w-full max-w-lg opacity-30 [-webkit-mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)] pointer-events-none filter grayscale contrast-125">
-                        <img src="watermarked_img_1638095033145218793.png" alt="Money Tips Avatar" class="w-full h-auto object-cover">
-                    </div>
-
-                    <!-- MODO OSCURO: Tarjeta original premium con bordes -->
-                    <div class="hidden dark:block relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 shadow-2xl group bg-transparent pointer-events-auto">
+                <div class="w-full lg:w-1/2 flex justify-center relative z-10 pointer-events-none">
+                    <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden border border-gray-200 dark:border-white/10 shadow-xl dark:shadow-glass group bg-gray-100 dark:bg-transparent">
                         <img src="watermarked_img_1638095033145218793.png" alt="CEO Money Tips" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/600x800/0A1128/00F59B?text=Money+Tips'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#050B14] via-transparent to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent dark:from-[#050B14]"></div>
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ESTADÍSTICAS & IFRAMES -->
-    <section id="estadisticas" class="py-24 bg-white dark:bg-brand-card border-y border-gray-200 dark:border-gray-800 relative z-10 transition-colors duration-300">
+    <section id="estadisticas" class="py-24 bg-white dark:bg-brand-card border-y border-gray-200 dark:border-white/5 relative z-10 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 mb-4">
+                    <i class="fas fa-chart-line text-brand-neon text-2xl"></i>
+                </div>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">Histórico Consolidado</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-3xl mx-auto text-lg leading-relaxed">
+                    Transparencia absoluta. Todas nuestras operaciones registradas y compartidas: desde nuestra etapa de análisis manual hasta la adopción total del Machine Learning (IA).
+                </p>
             </div>
 
             <!-- Panel de Estadísticas Totales (Métricas Principales) -->
