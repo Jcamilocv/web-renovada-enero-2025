@@ -36,7 +36,7 @@
                             lightCard: '#FFFFFF',
                             lightText: '#0F172A',
                             neon: '#00F59B',
-                            gold: '#FBBF24', // Dorado para el servicio VIP
+                            gold: '#FBBF24',
                             goldDark: '#B45309'
                         }
                     },
@@ -96,6 +96,13 @@
             opacity: 1;
             pointer-events: auto;
         }
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="antialiased font-sans flex flex-col min-h-screen bg-brand-lightBg dark:bg-brand-dark text-brand-lightText dark:text-gray-200 transition-colors duration-300">
@@ -130,7 +137,6 @@
                         <a href="#" target="_blank" class="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"><i class="fa-brands fa-x-twitter text-xl"></i></a>
                     </div>
 
-                    <!-- Botón Acceso IA -->
                     <a href="#premium" class="bg-brand-neon hover:bg-green-400 dark:hover:bg-white text-gray-900 dark:text-brand-dark px-5 py-2.5 rounded-lg text-sm font-bold transition-all shadow-sm dark:shadow-neon transform hover:-translate-y-0.5">
                         <i class="fa-solid fa-robot mr-2"></i>Acceso IA
                     </a>
@@ -197,7 +203,7 @@
                     </div>
                 </div>
 
-                <!-- Right Content (Avatar Image) Restaurado -->
+                <!-- Right Content (Avatar Image Original) -->
                 <div class="w-full lg:w-1/2 flex justify-center relative z-10">
                     <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden shadow-xl dark:shadow-2xl group bg-transparent">
                         <img src="watermarked_img_1638095033145218793.jpg" alt="CEO Money Tips" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/600x800/121C3A/00F59B?text=Avatar+Money+Tips'">
@@ -220,6 +226,7 @@
                 </p>
             </div>
 
+            <!-- Panel de Estadísticas Totales -->
             <div class="bg-slate-50 dark:bg-[#050B14] rounded-3xl border border-gray-200 dark:border-white/10 shadow-lg p-8 md:p-12 mb-12 relative overflow-hidden transition-colors duration-300">
                 <h3 class="text-xl font-bold text-gray-800 dark:text-gray-300 mb-8 uppercase tracking-wider text-center border-b border-gray-200 dark:border-white/10 pb-4">
                     Balance Acumulado (Temporadas 23/24 - 25/26)
@@ -244,11 +251,12 @@
                     </div>
                 </div>
 
+                <!-- Desglose por Eras -->
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div class="bg-gray-100 dark:bg-brand-card/50 p-6 rounded-xl border border-gray-200 dark:border-white/5 transition-colors duration-300">
                         <div class="flex items-center gap-3 mb-4">
                             <i class="fa-solid fa-user-gear text-gray-500 dark:text-gray-400 text-xl"></i>
-                            <h3 class="font-bold text-gray-900 dark:text-white">Era Análisis Manual</h3>
+                            <h4 class="font-bold text-gray-900 dark:text-white">Era Análisis Manual</h4>
                             <span class="text-xs bg-gray-200 dark:bg-white/10 text-gray-600 dark:text-gray-400 px-2 py-1 rounded font-medium">23/24 y 24/25</span>
                         </div>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Análisis intensivo de datos, lesiones y contextos. Muy rentable, pero humanamente insostenible a gran volumen.</p>
@@ -265,7 +273,7 @@
                     <div class="bg-green-50 dark:bg-brand-neon/5 p-6 rounded-xl border border-green-200 dark:border-brand-neon/20 transition-colors duration-300">
                         <div class="flex items-center gap-3 mb-4">
                             <i class="fa-solid fa-robot text-green-600 dark:text-brand-neon text-xl"></i>
-                            <h3 class="font-bold text-gray-900 dark:text-white">Era Machine Learning (IA)</h3>
+                            <h4 class="font-bold text-gray-900 dark:text-white">Era Machine Learning (IA)</h4>
                             <span class="text-xs bg-green-200 dark:bg-brand-neon/20 text-green-800 dark:text-brand-neon px-2 py-1 rounded font-bold">Temp. 25/26</span>
                         </div>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Implementación de modelos Random Forest. Detección masiva de ineficiencias en milisegundos. Escalabilidad total.</p>
@@ -281,8 +289,8 @@
                 </div>
             </div>
 
+            <!-- Contenedor Iframes -->
             <div class="w-full mt-12 bg-white dark:bg-[#050B14] rounded-3xl border border-gray-200 dark:border-white/10 shadow-xl overflow-hidden transition-colors duration-300">
-                <!-- Tabs Header -->
                 <div class="flex flex-col sm:flex-row border-b border-gray-200 dark:border-white/10 relative z-20 bg-slate-50 dark:bg-transparent">
                     <button onclick="showIframe('global')" id="btn-global" class="flex-1 py-4 px-4 text-center font-bold text-green-600 dark:text-brand-neon border-b-2 border-green-500 dark:border-brand-neon bg-white dark:bg-white/5 transition-all text-sm uppercase tracking-wider focus:outline-none">Histórico Global</button>
                     <button onclick="showIframe('t2526')" id="btn-t2526" class="flex-1 py-4 px-4 text-center font-semibold text-gray-500 dark:text-gray-400 border-b-2 border-transparent hover:text-gray-900 hover:bg-white dark:hover:text-white dark:hover:bg-white/5 transition-all text-sm uppercase tracking-wider focus:outline-none">25/26 (IA)</button>
@@ -316,23 +324,28 @@
         </div>
     </section>
 
-    <section id="historia" class="py-24 bg-brand-lightBg dark:bg-[#050B14] transition-colors duration-300 border-y border-gray-200 dark:border-white/5">
+    <section id="historia" class="py-24 bg-brand-lightBg dark:bg-brand-dark transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-10 text-center">La evolución de un inversor</h2>
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-10 text-center tracking-tight">La evolución de un inversor</h2>
             
-            <div class="space-y-6 text-lg text-gray-700 dark:text-gray-400 leading-relaxed">
+            <div class="space-y-6 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                <!-- Parte siempre visible -->
                 <p>Mi historia con las apuestas empezó exactamente igual que la de la mayoría de personas.</p>
                 <p>Buscando apuestas "seguras", persiguiendo cuotas altas para intentar dar el pelotazo y creyendo que detrás del siguiente pronóstico estaba la solución definitiva. También pasé por grupos de Telegram, seguí a supuestos expertos y cometí prácticamente todos los errores que puede cometer un apostador que está empezando.</p>
-                <p><strong>Perdí dinero. Perdí tiempo.</strong> Y, sobre todo, aprendí que la mayoría de personas que hablan de apuestas realmente no entienden cómo funcionan.</p>
-                <p>Sin embargo, había algo que no terminaba de encajarme. Siempre he tenido una mentalidad muy analítica. Me gustan los números, la lógica y encontrar explicaciones a las cosas. Y cuanto más investigaba este mundo, más me daba cuenta de que la mayoría de apostadores tomaban decisiones basándose en emociones, intuiciones o resultados recientes.</p>
+                <p>Perdí dinero. Perdí tiempo. Y, sobre todo, aprendí que la mayoría de personas que hablan de apuestas realmente no entienden cómo funcionan.</p>
+                <p>Sin embargo, había algo que no terminaba de encajarme.</p>
+                <p>Siempre he tenido una mentalidad muy analítica. Me gustan los números, la lógica y encontrar explicaciones a las cosas. Y cuanto más investigaba este mundo, más me daba cuenta de que la mayoría de apostadores tomaban decisiones basándose en emociones, intuiciones o resultados recientes.</p>
+                <p class="font-medium text-gray-900 dark:text-white">Hasta que un día entendí algo que cambió por completo mi forma de ver las apuestas.</p>
                 
-                <p class="text-xl font-medium text-gray-900 dark:text-white border-l-4 border-green-500 dark:border-brand-neon pl-4 py-2 my-8">
-                    Hasta que un día entendí algo que cambió por completo mi forma de ver las apuestas. Entendí que una cuota no es una opinión. <strong>Una cuota es una probabilidad.</strong> Y cuando comprendí eso, todo empezó a tener sentido.
-                </p>
-                
-                <p>Recuerdo perfectamente el momento en que aprendí que <em>no debía apostar a una cuota 1.59 algo que matemáticamente solo tenía valor a partir de 1.60</em>. Puede parecer una diferencia insignificante, pero fue un antes y un después. Dejé de buscar apuestas ganadoras y empecé a buscar apuestas con <strong>Valor Esperado Positivo (+EV)</strong>.</p>
+                <div class="p-8 bg-white dark:bg-brand-card border-l-4 border-green-500 dark:border-brand-neon rounded-r-xl my-10 shadow-sm relative overflow-hidden transition-colors duration-300">
+                    <div class="absolute -right-4 -top-4 opacity-5">
+                        <i class="fa-solid fa-quote-right text-9xl"></i>
+                    </div>
+                    <p class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4 relative z-10">Entendí que una cuota no es una opinión. Una cuota es una probabilidad.</p>
+                    <p class="text-base text-gray-600 dark:text-gray-400 relative z-10">Y cuando comprendí eso, todo empezó a tener sentido. Recuerdo perfectamente el momento en que aprendí que no debía apostar a una cuota 1.59 algo que matemáticamente solo tenía valor a partir de 1.60. Puede parecer una diferencia insignificante, pero fue un antes y un después. Dejé de buscar apuestas ganadoras y empecé a buscar apuestas con Valor Esperado Positivo (+EV).</p>
+                </div>
 
-                <!-- Contenedor del Botón (Visible por defecto) -->
+                <!-- Botón Desplegable -->
                 <div class="flex justify-center my-10" id="historia-btn-container">
                     <button class="inline-flex items-center bg-white dark:bg-brand-card text-gray-900 dark:text-white px-8 py-4 rounded-xl font-bold hover:text-green-600 dark:hover:text-brand-neon transition-all w-fit cursor-pointer group border border-gray-200 dark:border-white/10 shadow-sm" onclick="toggleHistoria(this)">
                         <span class="btn-text">Leer mi historia completa</span> <i class="fa-solid fa-chevron-down ml-3 group-hover:translate-y-1 transition-transform"></i>
@@ -401,66 +414,122 @@
         </div>
     </section>
 
-    <!-- NUEVA SECCIÓN: HERRAMIENTAS / MONEYTRACKING -->
-    <section id="herramientas" class="py-20 bg-white dark:bg-brand-card transition-colors duration-300 border-b border-gray-200 dark:border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
+    <section id="herramientas" class="py-24 bg-brand-lightBg dark:bg-brand-dark transition-colors duration-300 border-b border-gray-200 dark:border-gray-800 relative overflow-hidden">
+        <!-- Glows de fondo -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 dark:bg-brand-neon/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-72 h-72 bg-purple-500/5 dark:bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
                 <!-- Text Content -->
                 <div class="w-full lg:w-1/2">
-                    <span class="text-green-600 dark:text-brand-neon font-bold tracking-widest uppercase text-xs mb-2 block">Software Propio</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">MoneyTracKING <i class="fa-solid fa-crown text-yellow-500 ml-2"></i></h2>
-                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                        Los tipsters tradicionales te dan un Excel básico para que apuntes tus apuestas. Nosotros hemos desarrollado <strong>nuestra propia aplicación profesional</strong> para que lleves el control absoluto de tus inversiones.
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full bg-blue-100 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-400 text-xs font-bold uppercase tracking-wider shadow-sm">
+                        <i class="fa-solid fa-mobile-screen"></i> Software de Gestión Propio
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 tracking-tight leading-tight">
+                        Money<span class="text-blue-600 dark:text-brand-neon">TracKING</span>
+                    </h2>
+                    
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+                        Los tipsters tradicionales te envían un Excel obsoleto y tedioso para que apuntes tus apuestas. Nosotros hemos desarrollado <strong>nuestra propia aplicación web profesional</strong> para que lleves el control absoluto de tus inversiones al milímetro.
                     </p>
                     
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start">
-                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 dark:bg-brand-neon/20 flex items-center justify-center mt-1 mr-3">
-                                <i class="fa-solid fa-check text-green-600 dark:text-brand-neon text-xs"></i>
+                    <div class="space-y-5 mb-10">
+                        <!-- Característica 1 -->
+                        <div class="flex items-start bg-white dark:bg-brand-card p-4 rounded-xl border border-gray-100 dark:border-white/5 shadow-sm transition-colors duration-300">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 dark:bg-brand-neon/10 flex items-center justify-center mt-0.5 mr-4 border border-green-200 dark:border-brand-neon/20">
+                                <i class="fa-solid fa-robot text-green-600 dark:text-brand-neon"></i>
                             </div>
-                            <p class="text-gray-700 dark:text-gray-300"><strong>Gratuita para usuarios Premium:</strong> Registra las apuestas de Money Tips o las de cualquier otro sistema que sigas.</p>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 dark:bg-brand-neon/20 flex items-center justify-center mt-1 mr-3">
-                                <i class="fa-solid fa-check text-green-600 dark:text-brand-neon text-xs"></i>
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white mb-1">Escáner de Boletos con IA</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 leading-snug">Se acabó picar datos a mano. Sube una captura de tu apuesta y nuestra IA rellena las cuotas, importes y selecciones por ti. (10 escaneos gratuitos al mes).</p>
                             </div>
-                            <p class="text-gray-700 dark:text-gray-300"><strong>Límites Profesionales:</strong> Gestiona hasta 5 bancas independientes y registra hasta 1.000 apuestas por banca.</p>
-                        </li>
-                        <li class="flex items-start">
-                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 dark:bg-brand-neon/20 flex items-center justify-center mt-1 mr-3">
-                                <i class="fa-solid fa-check text-green-600 dark:text-brand-neon text-xs"></i>
+                        </div>
+                        
+                        <!-- Característica 2 -->
+                        <div class="flex items-start bg-white dark:bg-brand-card p-4 rounded-xl border border-gray-100 dark:border-white/5 shadow-sm transition-colors duration-300">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mt-0.5 mr-4 border border-blue-200 dark:border-blue-800/50">
+                                <i class="fa-solid fa-layer-group text-blue-600 dark:text-blue-400"></i>
                             </div>
-                            <p class="text-gray-700 dark:text-gray-300"><strong>Escáner Inteligente (IA):</strong> 10 escaneos gratuitos al mes. Sube la captura de tu boleto y la app rellena los datos por ti.</p>
-                        </li>
-                    </ul>
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white mb-1">Límites Profesionales</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 leading-snug">Controla no solo nuestros picks, sino tus apuestas personales u otros tipsters. Gestiona hasta 5 bancas independientes y 1.000 apuestas por banca.</p>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <a href="moneytracking.html" class="inline-flex items-center font-bold text-gray-900 dark:text-white hover:text-green-600 dark:hover:text-brand-neon transition-colors group">
-                        Descubrir todas las funciones de la App <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                    <a href="moneytracking.html" class="inline-flex items-center justify-center w-full sm:w-auto px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-extrabold rounded-xl hover:bg-gray-800 dark:hover:bg-gray-100 transition-all shadow-lg transform hover:-translate-y-1 group">
+                        Descubrir la App Completa <i class="fa-solid fa-arrow-right ml-3 transform group-hover:translate-x-1 transition-transform"></i>
                     </a>
+                    <p class="text-xs text-gray-500 mt-4 text-center sm:text-left"><i class="fa-solid fa-circle-check text-green-500 mr-1"></i> Gratuita para usuarios de la comunidad.</p>
                 </div>
                 
-                <!-- Mockup Visual -->
-                <div class="w-full lg:w-1/2 flex justify-center">
-                    <div class="relative w-full max-w-sm">
-                        <!-- Glow -->
-                        <div class="absolute inset-0 bg-blue-500 dark:bg-brand-neon opacity-20 blur-2xl rounded-full"></div>
-                        <!-- UI Mockup -->
-                        <div class="relative bg-slate-50 dark:bg-[#050B14] border border-gray-200 dark:border-white/10 rounded-3xl p-6 shadow-2xl">
-                            <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-200 dark:border-white/5">
-                                <span class="font-bold text-gray-900 dark:text-white"><i class="fa-solid fa-chart-pie text-green-500 mr-2"></i> Dashboard</span>
-                                <span class="text-xs bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-300 px-2 py-1 rounded">Banca Principal</span>
-                            </div>
-                            <div class="space-y-4">
-                                <div class="h-8 bg-gray-200 dark:bg-gray-800 rounded w-3/4"></div>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class="h-20 bg-gray-200 dark:bg-gray-800 rounded-xl"></div>
-                                    <div class="h-20 bg-gray-200 dark:bg-gray-800 rounded-xl"></div>
+                <!-- Mockup Visual de la App -->
+                <div class="w-full lg:w-1/2 flex justify-center lg:justify-end relative">
+                    <!-- Efecto de capas detrás del móvil -->
+                    <div class="absolute top-10 right-10 w-full max-w-[280px] h-[500px] bg-slate-200 dark:bg-[#0A1128] rounded-[2.5rem] border border-gray-300 dark:border-gray-700 transform rotate-6 opacity-50 z-0 hidden sm:block"></div>
+                    
+                    <!-- Marco del "Móvil" -->
+                    <div class="relative w-full max-w-[320px] bg-white dark:bg-[#050B14] rounded-[2.5rem] border-8 border-gray-100 dark:border-gray-800 shadow-2xl z-10 overflow-hidden flex flex-col">
+                        
+                        <!-- Top Bar Móvil -->
+                        <div class="bg-white dark:bg-[#050B14] px-6 pt-5 pb-3 flex justify-between items-center border-b border-gray-100 dark:border-white/5 shrink-0 z-20">
+                            <i class="fa-solid fa-bars text-gray-500 dark:text-gray-400 text-lg"></i>
+                            <span class="font-bold text-gray-900 dark:text-white text-sm">Panel de Control</span>
+                            <i class="fa-regular fa-moon text-gray-400 dark:text-gray-500"></i>
+                        </div>
+                        
+                        <!-- Contenido interior desplazable (Simulado) -->
+                        <div class="bg-slate-50 dark:bg-[#0A1128] p-4 flex-1 overflow-hidden relative">
+                            <!-- Degradado sutil de fondo -->
+                            <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-blue-50/50 dark:from-brand-neon/5 to-transparent"></div>
+                            
+                            <div class="space-y-4 relative z-10">
+                                <!-- Tarjeta Beneficio Total -->
+                                <div class="bg-white dark:bg-[#121C3A] rounded-2xl p-5 shadow-sm border border-gray-100 dark:border-white/5">
+                                    <h5 class="text-[10px] font-bold text-blue-600 dark:text-brand-neon uppercase tracking-wider mb-1">Beneficio Total</h5>
+                                    <div class="text-3xl font-black text-gray-900 dark:text-white mb-3">7175,31 €</div>
+                                    <div class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg text-xs font-semibold text-gray-700 dark:text-gray-300">
+                                        <i class="fa-solid fa-share-nodes"></i> Compartir Banca
+                                    </div>
                                 </div>
-                                <div class="h-32 bg-green-100 dark:bg-brand-neon/10 border border-green-200 dark:border-brand-neon/30 rounded-xl flex items-center justify-center">
-                                    <i class="fa-solid fa-camera text-3xl text-green-500 dark:text-brand-neon opacity-50"></i>
+                                
+                                <!-- Cuadrícula de Stats -->
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="bg-white dark:bg-[#121C3A] p-4 rounded-xl border border-gray-100 dark:border-white/5 shadow-sm text-center">
+                                        <div class="text-[9px] font-bold text-gray-500 uppercase mb-1">Picks</div>
+                                        <div class="text-xl font-bold text-gray-900 dark:text-white">743</div>
+                                    </div>
+                                    <div class="bg-white dark:bg-[#121C3A] p-4 rounded-xl border border-gray-100 dark:border-white/5 shadow-sm text-center">
+                                        <div class="text-[9px] font-bold text-gray-500 uppercase mb-1">Ganados</div>
+                                        <div class="text-xl font-bold text-green-600 dark:text-brand-neon">427</div>
+                                    </div>
                                 </div>
-                                <div class="h-10 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-xl flex items-center justify-center font-bold text-sm">Escanear Boleto</div>
+                                
+                                <!-- Simulación del Módulo de IA -->
+                                <div class="bg-white dark:bg-[#121C3A] rounded-2xl p-5 shadow-sm border border-blue-100 dark:border-brand-neon/20 relative overflow-hidden mt-2">
+                                    <!-- Fondo corona marca de agua -->
+                                    <i class="fa-solid fa-crown absolute top-2 right-2 text-6xl text-gray-50 dark:text-white/5"></i>
+                                    
+                                    <div class="relative z-10">
+                                        <div class="flex items-center justify-center gap-2 mb-3">
+                                            <i class="fa-solid fa-crown text-blue-500 dark:text-brand-neon text-xs"></i>
+                                            <span class="text-[10px] font-bold text-blue-600 dark:text-brand-neon uppercase tracking-widest">Análisis IA Premium</span>
+                                        </div>
+                                        
+                                        <div class="w-full py-3 bg-slate-50 dark:bg-[#050B14] border border-gray-200 dark:border-white/10 rounded-xl flex flex-col items-center justify-center gap-1 cursor-pointer">
+                                            <i class="fa-solid fa-arrow-up-from-bracket text-gray-400 dark:text-gray-500 mb-1"></i>
+                                            <span class="text-xs font-bold text-gray-700 dark:text-gray-300">Subir Captura del Boleto</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        
+                        <!-- Barra inferior (Home bar iOS) -->
+                        <div class="h-6 bg-white dark:bg-[#050B14] flex justify-center items-center shrink-0 border-t border-gray-100 dark:border-white/5">
+                            <div class="w-1/3 h-1 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
                         </div>
                     </div>
                 </div>
@@ -468,10 +537,10 @@
         </div>
     </section>
 
-    <section id="ecosistema" class="py-24 bg-slate-100 dark:bg-[#050B14] transition-colors duration-300">
+    <section id="ecosistema" class="py-24 bg-slate-100 dark:bg-[#050B14] transition-colors duration-300 border-b border-gray-200 dark:border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black dark:from-[#0A1128] dark:via-brand-dark dark:to-black rounded-3xl p-1">
-                <!-- Borde animado VIP -->
+                <!-- Borde animado VIP dorado -->
                 <div class="absolute inset-0 bg-gradient-to-r from-yellow-600 via-yellow-300 to-yellow-600 rounded-3xl opacity-50"></div>
                 
                 <div class="relative bg-gray-900 dark:bg-[#050B14] rounded-[23px] p-8 md:p-14 overflow-hidden flex flex-col md:flex-row items-center justify-between z-10 shadow-gold">
@@ -503,8 +572,9 @@
         </div>
     </section>
 
-    <!-- PREMIUM SECTION (PLAZAS CERRADAS) -->
-    <section id="premium" class="py-24 bg-white dark:bg-brand-card relative overflow-hidden transition-colors duration-300 border-y border-gray-200 dark:border-white/5">
+    <section id="premium" class="py-24 bg-brand-lightBg dark:bg-[#050B14] relative overflow-hidden transition-colors duration-300">
+        <div class="hidden dark:block absolute top-0 right-0 w-[600px] h-[600px] bg-brand-neon/5 rounded-full blur-3xl pointer-events-none"></div>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
                 <span class="text-green-600 dark:text-brand-neon font-bold tracking-widest uppercase text-xs mb-2 block">El valor de la información</span>
@@ -514,10 +584,10 @@
 
             <div class="flex justify-center">
                 <!-- Plan Principal (Cerrado por FOMO) -->
-                <div class="bg-slate-50 dark:bg-[#050B14] rounded-3xl p-8 border border-gray-200 dark:border-gray-700 flex flex-col relative w-full max-w-md shadow-xl transition-colors duration-300 overflow-hidden">
+                <div class="bg-white dark:bg-brand-card rounded-3xl p-8 border border-gray-200 dark:border-gray-700 flex flex-col relative w-full max-w-md shadow-xl transition-colors duration-300 overflow-hidden">
                     
                     <!-- Capa de bloqueo Plazas Cerradas -->
-                    <div class="absolute inset-0 bg-slate-900/50 dark:bg-black/60 backdrop-blur-[3px] z-10 flex flex-col items-center justify-center rounded-3xl">
+                    <div class="absolute inset-0 bg-slate-900/40 dark:bg-black/40 backdrop-blur-[2px] z-10 flex flex-col items-center justify-center rounded-3xl">
                         <div class="bg-red-600 text-white px-6 py-2 rounded-full font-bold text-sm uppercase tracking-wider mb-4 shadow-lg flex items-center gap-2">
                             <i class="fa-solid fa-lock"></i> Plazas Cerradas
                         </div>
@@ -529,7 +599,7 @@
                         </a>
                     </div>
 
-                    <div class="bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-black text-center text-xs py-2 rounded-t-xl uppercase tracking-wider absolute top-0 left-0 right-0 transition-colors">
+                    <div class="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-black text-center text-xs py-2 rounded-t-xl uppercase tracking-wider absolute top-0 left-0 right-0 transition-colors">
                         Acceso Total
                     </div>
                     
@@ -544,7 +614,7 @@
                             <li class="flex items-start"><i class="fa-solid fa-check text-gray-400 dark:text-gray-500 mt-1 mr-3"></i> Transparencia total en Money TracKING</li>
                         </ul>
 
-                        <div class="w-full py-4 bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 font-extrabold rounded-xl text-center text-lg uppercase tracking-wide block">
+                        <div class="w-full py-4 bg-gray-200 dark:bg-gray-700 text-gray-400 font-extrabold rounded-xl text-center text-lg uppercase tracking-wide block">
                             Suscribirse Ahora
                         </div>
                     </div>
@@ -560,7 +630,7 @@
                 <div class="lg:col-span-1">
                     <div class="flex items-center gap-2 mb-4">
                         <img src="favicon.png" alt="Logo" class="w-8 h-8 opacity-80">
-                        <span class="font-bold text-3xl tracking-tight text-gray-900 dark:text-white">Money<span class="text-green-600 dark:text-brand-neon">Tips</span></span>
+                        <span class="font-bold text-3xl tracking-tight text-[#22C55E] dark:text-[#00F59B]">Money<span class="text-[#51E3A2]">Tips</span></span>
                     </div>
                     <p class="text-gray-600 dark:text-gray-500 text-sm leading-relaxed mb-6">
                         Infraestructura tecnológica para la inversión deportiva. Cero intuición, puras matemáticas.
@@ -599,14 +669,15 @@
                     <h4 class="text-gray-900 dark:text-white font-bold mb-4 text-sm uppercase tracking-wider">Newsletter Privada</h4>
                     <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">Déjanos tu correo y usuario de Telegram para recibir avisos de apertura de plazas.</p>
                     
-                    <!-- Formulario real conectado a tu correo -->
-                    <!-- Cuando hagas el primer envío, revisa el mail. Formsubmit te dará un string para sustituir tu correo visible aquí -->
-                    <form action="https://formsubmit.co/cb156a665f6a722b3f92e5943cf3069f" method="POST" class="space-y-3">
+                    <!-- Formulario conectado a FormSubmit -->
+                    <!-- NOTA: Cuando hagas el primer envío de prueba, revisa la bandeja de entrada de apuestashappy@gmail.com para activar Formsubmit -->
+                    <form action="https://formsubmit.co/apuestashappy@gmail.com" method="POST" class="space-y-3">
                         <!-- Configuraciones ocultas de FormSubmit -->
                         <input type="hidden" name="_subject" value="Nuevo Lead - Newsletter Money Tips!">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_next" value="https://pronosticosmoneytips.com/"> <!-- Cambiar a una página de gracias si la tienes -->
+                        <!-- Redirigir al mismo index.html tras enviar (puedes cambiarlo a una URL absoluta de 'gracias') -->
+                        <input type="hidden" name="_next" value="#"> 
 
                         <input type="email" name="email" placeholder="Tu correo electrónico" required class="w-full bg-slate-50 dark:bg-[#050B14] border border-gray-300 dark:border-white/10 rounded-lg px-4 py-2 text-sm text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-green-500 dark:focus:border-brand-neon transition-colors">
                         <div class="relative">
@@ -646,7 +717,7 @@
                 <p>El acceso y/o uso de este portal de Money Tips atribuye la condición de USUARIO, que acepta, desde dicho acceso y/o uso, las Condiciones Generales de Uso aquí reflejadas. El portal es estrictamente para mayores de 18 años (+18).</p>
 
                 <h4 class="text-gray-900 dark:text-white font-bold mt-4">3. Exención de Responsabilidad</h4>
-                <p>La información, pronósticos y herramientas proporcionadas tienen fines meramente informativos y estadísticos. Las apuestas deportivas conllevan un alto nivel de riesgo.</p>
+                <p>La información, pronósticos y herramientas proporcionadas tienen fines meramente informativos y estadísticos. Las apuestas deportivas conllevan un alto nivel de riesgo. Money Tips no garantiza beneficios futuros basándose en resultados pasados.</p>
             </div>
             <div class="p-4 border-t border-gray-200 dark:border-white/10 bg-slate-50 dark:bg-[#050B14] shrink-0 rounded-b-2xl text-right">
                 <button onclick="toggleModal('modal-legal')" class="px-6 py-2 bg-green-500 dark:bg-brand-neon text-white dark:text-brand-dark font-bold rounded-lg hover:bg-green-600 dark:hover:bg-white transition-colors">Cerrar</button>
@@ -662,7 +733,7 @@
             </div>
             <div class="p-6 overflow-y-auto text-sm text-gray-600 dark:text-gray-400 space-y-4">
                 <h4 class="text-gray-900 dark:text-white font-bold">Protección de Datos</h4>
-                <p>Money Tips cumple con las directrices del Reglamento General de Protección de Datos (RGPD). Los datos recabados a través de la newsletter serán utilizados única y exclusivamente para enviar información relativa a nuestros servicios.</p>
+                <p>Money Tips cumple con las directrices del Reglamento General de Protección de Datos (RGPD). Los datos recabados a través de la newsletter serán utilizados única y exclusivamente para enviar información relativa a nuestros servicios de inversión, novedades y aperturas.</p>
             </div>
             <div class="p-4 border-t border-gray-200 dark:border-white/10 bg-slate-50 dark:bg-[#050B14] shrink-0 rounded-b-2xl text-right">
                 <button onclick="toggleModal('modal-privacidad')" class="px-6 py-2 bg-green-500 dark:bg-brand-neon text-white dark:text-brand-dark font-bold rounded-lg hover:bg-green-600 dark:hover:bg-white transition-colors">Entendido</button>
